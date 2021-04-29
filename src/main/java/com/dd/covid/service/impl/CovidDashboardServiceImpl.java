@@ -1,5 +1,6 @@
 package com.dd.covid.service.impl;
 
+import com.dd.covid.aop.annotation.LogExecutionTime;
 import com.dd.covid.model.CasesTimeSeriesWrapper;
 import com.dd.covid.model.StateTimeSeriesWrapper;
 import com.dd.covid.rest.CovidRest;
@@ -13,11 +14,13 @@ public class CovidDashboardServiceImpl implements CovidDashboardService {
     @Autowired
     CovidRest covidRest;
 
+    @LogExecutionTime
     public CasesTimeSeriesWrapper getCountryTimeSeriesData(){
 
         return covidRest.getCountryTimeSeriesData();
     }
 
+    @LogExecutionTime
     public StateTimeSeriesWrapper getStateTimeSeriesData(){
         return covidRest.getStateTimeSeriesData();
     }

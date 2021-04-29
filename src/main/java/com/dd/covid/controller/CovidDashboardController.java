@@ -1,5 +1,6 @@
 package com.dd.covid.controller;
 
+import com.dd.covid.aop.annotation.LogExecutionTime;
 import com.dd.covid.exception.CountryNotSupportedException;
 import com.dd.covid.model.CasesTimeSeriesWrapper;
 import com.dd.covid.model.StateTimeSeriesWrapper;
