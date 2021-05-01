@@ -14,13 +14,13 @@ public class CovidDashboardServiceImpl implements CovidDashboardService {
     @Autowired
     CovidRest covidRest;
 
-    @LogExecutionTime
+
     public CasesTimeSeriesWrapper getCountryTimeSeriesData(){
 
         return covidRest.getCountryTimeSeriesData();
     }
 
-    @LogExecutionTime
+
     public StateTimeSeriesWrapper getStateTimeSeriesData(){
         return covidRest.getStateTimeSeriesData();
     }
