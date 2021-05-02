@@ -15,6 +15,8 @@
 	<description>Covid 19 dashboard API</description>
 	<properties>
 		<java.version>11</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.release>15</maven.compiler.release>
 	</properties>
 	<dependencies>
 
@@ -45,8 +47,18 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-	</dependencies>
 
+		<!--<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>-->
+	</dependencies>
 	<build>
 		<plugins>
 			<plugin>
