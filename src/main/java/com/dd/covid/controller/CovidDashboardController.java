@@ -28,7 +28,7 @@ public class CovidDashboardController {
      * @throws CountryNotSupportedException
      */
     @GetMapping("/{country}")
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     @LogExecutionTime
     public CasesTimeSeriesWrapper getCountryTimeSeriesData(@PathVariable(name = "country") String country) throws CountryNotSupportedException {
         covidDashboardValidator.validate(country);
@@ -43,7 +43,7 @@ public class CovidDashboardController {
      * @throws CountryNotSupportedException
      */
     @GetMapping("/{country}/{state}")
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     @LogExecutionTime
     public StateTimeSeriesWrapper getStateTimeSeriesData(@PathVariable(name = "country") String country, @PathVariable(name = "state") String state) throws CountryNotSupportedException {
         covidDashboardValidator.validate(country, state);
