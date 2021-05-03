@@ -98,6 +98,13 @@ public class AuthController {
         Set<String> strRoles = signUpRequest.getRole();
         Set<Role> roles = new HashSet<>();
 
+        // hack cause data.sql not working with heruko
+        List<Role> roleData = roleRepository.findAll();
+        if(roleData == null || roleData.isEmpty()){
+            roleRepository.save(new Role(ERole.ROLE_USER));
+            roleRepository.save(new Role(ERole.ROLE_ADMIN));
+        }
+
         if (strRoles == null || strRoles.isEmpty()) {
             Role userRole = roleRepository.findByName(ERole.ROLE_USER)
                     .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
