@@ -7,13 +7,11 @@ import com.dd.covid.model.StateTimeSeriesWrapper;
 import com.dd.covid.service.CovidDashboardService;
 import com.dd.covid.validator.CovidDashboardValidator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin()
+@RequestMapping("/api/covid")
 public class CovidDashboardController {
 
     @Autowired
@@ -28,7 +26,7 @@ public class CovidDashboardController {
      * @return
      * @throws CountryNotSupportedException
      */
-    @GetMapping("/covid/{country}")
+    @GetMapping("/{country}")
     @LogExecutionTime
     public CasesTimeSeriesWrapper getCountryTimeSeriesData(@PathVariable(name = "country") String country) throws CountryNotSupportedException {
         covidDashboardValidator.validate(country);
@@ -42,7 +40,7 @@ public class CovidDashboardController {
      * @return
      * @throws CountryNotSupportedException
      */
-    @GetMapping("/covid/{country}/{state}")
+    @GetMapping("/{country}/{state}")
     @LogExecutionTime
     public StateTimeSeriesWrapper getStateTimeSeriesData(@PathVariable(name = "country") String country, @PathVariable(name = "state") String state) throws CountryNotSupportedException {
         covidDashboardValidator.validate(country, state);
