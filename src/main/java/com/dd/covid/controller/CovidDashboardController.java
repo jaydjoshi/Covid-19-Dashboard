@@ -7,6 +7,7 @@ import com.dd.covid.model.StateTimeSeriesWrapper;
 import com.dd.covid.service.CovidDashboardService;
 import com.dd.covid.validator.CovidDashboardValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -27,6 +28,7 @@ public class CovidDashboardController {
      * @throws CountryNotSupportedException
      */
     @GetMapping("/{country}")
+    @PreAuthorize("hasRole('USER')")
     @LogExecutionTime
     public CasesTimeSeriesWrapper getCountryTimeSeriesData(@PathVariable(name = "country") String country) throws CountryNotSupportedException {
         covidDashboardValidator.validate(country);
@@ -41,6 +43,7 @@ public class CovidDashboardController {
      * @throws CountryNotSupportedException
      */
     @GetMapping("/{country}/{state}")
+    @PreAuthorize("hasRole('USER')")
     @LogExecutionTime
     public StateTimeSeriesWrapper getStateTimeSeriesData(@PathVariable(name = "country") String country, @PathVariable(name = "state") String state) throws CountryNotSupportedException {
         covidDashboardValidator.validate(country, state);

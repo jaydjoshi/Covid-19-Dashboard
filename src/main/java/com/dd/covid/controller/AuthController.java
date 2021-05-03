@@ -17,8 +17,11 @@ import com.dd.covid.payload.response.JwtResponse;
 import com.dd.covid.payload.response.MessageResponse;
 import com.dd.covid.repository.RoleRepository;
 import com.dd.covid.repository.UserRepository;
+import com.dd.covid.rest.CovidRest;
 import com.dd.covid.security.jwt.JwtUtils;
 import com.dd.covid.security.services.UserDetailsImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -53,6 +56,8 @@ public class AuthController {
     @Autowired
     JwtUtils jwtUtils;
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(AuthController.class);
+
     @PostMapping("/signin")
     @LogExecutionTime
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
@@ -68,6 +73,7 @@ public class AuthController {
                 .map(item -> item.getAuthority())
                 .collect(Collectors.toList());
 
+        LOGGER.info("User: "+loginRequest.getUsername() +" logged in successfully");
         return ResponseEntity.ok(new JwtResponse(jwt,
                 userDetails.getId(),
                 userDetails.getUsername(),
@@ -128,6 +134,7 @@ public class AuthController {
 
         user.setRoles(roles);
         userRepository.save(user);
+        LOGGER.info("User: "+user +" signed up successfully");
 
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }
