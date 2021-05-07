@@ -1,77 +1,80 @@
 package com.dd.covid.model;
 
 
+import com.dd.covid.util.DateHandler;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 public class CasesTimeSeries {
 
     @JsonProperty("dailyconfirmed")
-    private String dailyConfirmed;
+    private int dailyConfirmed;
     @JsonProperty("dailydeceased")
-    private String dailyDeceased;
+    private int dailyDeceased;
     @JsonProperty("dailyrecovered")
-    private String dailyRecovered;
-    private String date;
+    private int dailyRecovered;
+    @JsonDeserialize(using = DateHandler.class)
+    private int date;
     @JsonProperty("totalconfirmed")
-    private String totalConfirmed;
+    private int totalConfirmed;
     @JsonProperty("totaldeceased")
-    private String totalDeceased;
+    private int totalDeceased;
     @JsonProperty("totalrecovered")
-    private String totalRecovered;
+    private int totalRecovered;
 
-    public String getDailyConfirmed() {
+    public int getDailyConfirmed() {
         return dailyConfirmed;
     }
 
-    public void setDailyConfirmed(String dailyConfirmed) {
+    public void setDailyConfirmed(int dailyConfirmed) {
         this.dailyConfirmed = dailyConfirmed;
     }
 
-    public String getDailyDeceased() {
+    public int getDailyDeceased() {
         return dailyDeceased;
     }
 
-    public void setDailyDeceased(String dailyDeceased) {
+    public void setDailyDeceased(int dailyDeceased) {
         this.dailyDeceased = dailyDeceased;
     }
 
-    public String getDailyRecovered() {
+    public int getDailyRecovered() {
         return dailyRecovered;
     }
 
-    public void setDailyRecovered(String dailyRecovered) {
+    public void setDailyRecovered(int dailyRecovered) {
         this.dailyRecovered = dailyRecovered;
     }
 
-    public String getDate() {
+    public int getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(int date) {
         this.date = date;
     }
 
-    public String getTotalConfirmed() {
+    public int getTotalConfirmed() {
         return totalConfirmed;
     }
 
-    public void setTotalConfirmed(String totalConfirmed) {
+    public void setTotalConfirmed(int totalConfirmed) {
         this.totalConfirmed = totalConfirmed;
     }
 
-    public String getTotalDeceased() {
+    public int getTotalDeceased() {
         return totalDeceased;
     }
 
-    public void setTotalDeceased(String totalDeceased) {
+    public void setTotalDeceased(int totalDeceased) {
         this.totalDeceased = totalDeceased;
     }
 
-    public String getTotalRecovered() {
+    public int getTotalRecovered() {
         return totalRecovered;
     }
 
-    public void setTotalRecovered(String totalRecovered) {
+    public void setTotalRecovered(int totalRecovered) {
         this.totalRecovered = totalRecovered;
     }
 

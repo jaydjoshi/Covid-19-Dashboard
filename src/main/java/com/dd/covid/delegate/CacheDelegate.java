@@ -11,6 +11,8 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 import static javax.management.timer.Timer.ONE_HOUR;
 import static javax.management.timer.Timer.ONE_MINUTE;
 

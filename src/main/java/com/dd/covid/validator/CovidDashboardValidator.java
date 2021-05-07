@@ -20,7 +20,7 @@ public class CovidDashboardValidator {
     }
 
     public boolean validate(String country, String state) throws CountryNotSupportedException {
-        if(CovidConstants.INDIA.equalsIgnoreCase(country) ){
+        if(CovidConstants.INDIA.equalsIgnoreCase(country)){
             return true;
         }
         throw new CountryNotSupportedException();
