@@ -24,7 +24,7 @@ public class DateHandler extends JsonDeserializer<LocalDate> {
         String date = p.getText();
         try {
             if(date != null) {
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy", Locale.ENGLISH);
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d MMMM yyyy", Locale.ENGLISH);
 
                 return LocalDate.parse(date, formatter);
             }

@@ -25,7 +25,7 @@ public class DateTimeHandler extends JsonDeserializer<LocalDateTime> {
         try {
             if(date != null) {
                 // Example - 7/5/2021 14:05:09"
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy HH:mm:ss");
 
                 return LocalDateTime.parse(date, formatter);
             }
