@@ -12,8 +12,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import static javax.management.timer.Timer.ONE_DAY;
-import static javax.management.timer.Timer.ONE_MINUTE;
 
 @Component
 public class CovidRest {
@@ -58,5 +56,6 @@ public class CovidRest {
 
     }
 
+    // create api for https://api.covid19india.org/state_district_wise.json
 
 }

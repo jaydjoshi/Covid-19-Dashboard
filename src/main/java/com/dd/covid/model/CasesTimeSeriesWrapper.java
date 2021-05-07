@@ -11,6 +11,8 @@ public class CasesTimeSeriesWrapper {
     List<CasesTimeSeries> casesTimeSeriesList;
     @JsonProperty("statewise")
     List<StateWiseSummary> stateWiseSummaryList;
+    @JsonProperty("tested")
+    List<VacinationDetail> vacinationDetailList;
 
     public List<CasesTimeSeries> getCasesTimeSeriesList() {
         return casesTimeSeriesList;
@@ -28,11 +30,20 @@ public class CasesTimeSeriesWrapper {
         this.stateWiseSummaryList = stateWiseSummaryList;
     }
 
+    public List<VacinationDetail> getVacinationDetailList() {
+        return vacinationDetailList;
+    }
+
+    public void setVacinationDetailList(List<VacinationDetail> vacinationDetailList) {
+        this.vacinationDetailList = vacinationDetailList;
+    }
+
     @Override
     public String toString() {
         return "CasesTimeSeriesWrapper{" +
                 "casesTimeSeriesList=" + casesTimeSeriesList +
                 ", stateWiseSummaryList=" + stateWiseSummaryList +
+                ", vacinationDetailList=" + vacinationDetailList +
                 '}';
     }
 }
