@@ -13,19 +13,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+
 @Service
 public class CovidDashboardServiceImpl implements CovidDashboardService {
 
     @Autowired
     CacheDelegate cacheDelegate;
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(CovidDashboardServiceImpl.class);
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(CovidDashboardServiceImpl.class);
+    private final ZoneId zoneId = ZoneId.systemDefault();
 
 
     public CasesTimeSeriesWrapper getCountryTimeSeriesData(){
 
-        return cacheDelegate.getCountryTimeSeriesData();
+        CasesTimeSeriesWrapper casesTimeSeriesWrapper = cacheDelegate.getCountryTimeSeriesData();
+        casesTimeSeriesWrapper.getCasesTimeSeriesList().stream().forEach(a -> a.setDateInEpoch(a.getDate().atStartOfDay(zoneId).toEpochSecond()));
+
+        return casesTimeSeriesWrapper;
     }
 
 

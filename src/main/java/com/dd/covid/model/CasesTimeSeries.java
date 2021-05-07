@@ -17,6 +17,7 @@ public class CasesTimeSeries {
     private int dailyRecovered;
     @JsonDeserialize(using = DateHandler.class)
     private LocalDate date;
+    private long dateInEpoch;
     @JsonProperty("totalconfirmed")
     private int totalConfirmed;
     @JsonProperty("totaldeceased")
@@ -78,6 +79,14 @@ public class CasesTimeSeries {
 
     public void setTotalRecovered(int totalRecovered) {
         this.totalRecovered = totalRecovered;
+    }
+
+    public long getDateInEpoch() {
+        return dateInEpoch;
+    }
+
+    public void setDateInEpoch(long dateInEpoch) {
+        this.dateInEpoch = dateInEpoch;
     }
 
     @Override
