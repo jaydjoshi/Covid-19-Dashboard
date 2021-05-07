@@ -1,24 +1,32 @@
 package com.dd.covid.model;
 
+import com.dd.covid.util.DateHandler;
+import com.dd.covid.util.DateTimeHandler;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+import java.time.LocalDateTime;
 
 public class StateWiseSummary {
 
 
-    private String active;
-    private String confirmed;
-    private String deaths;
+    private int active;
+    private int confirmed;
+    private int deaths;
     @JsonProperty("deltaconfirmed")
-    private String deltaConfirmed;
+    private int deltaConfirmed;
     @JsonProperty("deltadeaths")
-    private String deltaDeaths;
+    private int deltaDeaths;
     @JsonProperty("deltarecovered")
-    private String deltaRecovered;
+    private int deltaRecovered;
+
     @JsonProperty("lastupdatedtime")
-    private String lastUpdatedTime;
+    @JsonDeserialize(using = DateTimeHandler.class)
+    private LocalDateTime lastUpdatedTime;
+
     @JsonProperty("migratedother")
-    private String migratedOther;
-    private String recovered;
+    private int migratedOther;
+    private int recovered;
     private String state;
     @JsonProperty("statecode")
     private String stateCode;
@@ -26,76 +34,76 @@ public class StateWiseSummary {
     private String stateNotes;
 
 
-    public String getActive() {
+    public int getActive() {
         return active;
     }
 
-    public void setActive(String active) {
+    public void setActive(int active) {
         this.active = active;
     }
 
-    public String getConfirmed() {
+    public int getConfirmed() {
         return confirmed;
     }
 
-    public void setConfirmed(String confirmed) {
+    public void setConfirmed(int confirmed) {
         this.confirmed = confirmed;
     }
 
-    public String getDeaths() {
+    public int getDeaths() {
         return deaths;
     }
 
-    public void setDeaths(String deaths) {
+    public void setDeaths(int deaths) {
         this.deaths = deaths;
     }
 
-    public String getDeltaConfirmed() {
+    public int getDeltaConfirmed() {
         return deltaConfirmed;
     }
 
-    public void setDeltaConfirmed(String deltaConfirmed) {
+    public void setDeltaConfirmed(int deltaConfirmed) {
         this.deltaConfirmed = deltaConfirmed;
     }
 
-    public String getDeltaDeaths() {
+    public int getDeltaDeaths() {
         return deltaDeaths;
     }
 
-    public void setDeltaDeaths(String deltaDeaths) {
+    public void setDeltaDeaths(int deltaDeaths) {
         this.deltaDeaths = deltaDeaths;
     }
 
-    public String getDeltaRecovered() {
+    public int getDeltaRecovered() {
         return deltaRecovered;
     }
 
-    public void setDeltaRecovered(String deltaRecovered) {
+    public void setDeltaRecovered(int deltaRecovered) {
         this.deltaRecovered = deltaRecovered;
     }
 
-    public String getLastUpdatedTime() {
-        return lastUpdatedTime;
-    }
-
-    public void setLastUpdatedTime(String lastUpdatedTime) {
-        this.lastUpdatedTime = lastUpdatedTime;
-    }
-
-    public String getMigratedOther() {
+    public int getMigratedOther() {
         return migratedOther;
     }
 
-    public void setMigratedOther(String migratedOther) {
+    public void setMigratedOther(int migratedOther) {
         this.migratedOther = migratedOther;
     }
 
-    public String getRecovered() {
+    public int getRecovered() {
         return recovered;
     }
 
-    public void setRecovered(String recovered) {
+    public void setRecovered(int recovered) {
         this.recovered = recovered;
+    }
+
+    public LocalDateTime getLastUpdatedTime() {
+        return lastUpdatedTime;
+    }
+
+    public void setLastUpdatedTime(LocalDateTime lastUpdatedTime) {
+        this.lastUpdatedTime = lastUpdatedTime;
     }
 
     public String getState() {

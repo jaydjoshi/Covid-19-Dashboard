@@ -11,22 +11,23 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.Locale;
 
-public class DateHandler extends JsonDeserializer<LocalDate> {
+public class DateTimeHandler extends JsonDeserializer<LocalDateTime> {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(DateHandler.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(DateTimeHandler.class);
 
     @Override
-    public LocalDate deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public LocalDateTime deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JsonProcessingException {
         String date = p.getText();
         try {
             if(date != null) {
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy", Locale.ENGLISH);
+                // Example - 7/5/2021 14:05:09"
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 
-                return LocalDate.parse(date, formatter);
+                return LocalDateTime.parse(date, formatter);
             }
             return null;
         } catch (Exception e) {
