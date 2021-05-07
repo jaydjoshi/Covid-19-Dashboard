@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin()
 @RequestMapping("/api/covid")
@@ -48,5 +50,12 @@ public class CovidDashboardController {
     public StateTimeSeriesWrapper getStateTimeSeriesData(@PathVariable(name = "country") String country, @PathVariable(name = "state") String state) throws CountryNotSupportedException {
         covidDashboardValidator.validate(country, state);
         return covidDashboardService.getStateTimeSeriesData();
+    }
+
+    @GetMapping("/typeahead")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+    @LogExecutionTime
+    public List<String> getTypeAheadData() {
+        return covidDashboardService.getTypeAheadData();
     }
 }
