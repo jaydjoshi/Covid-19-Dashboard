@@ -10,19 +10,24 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.Locale;
 
-public class DateHandler extends JsonDeserializer<Date> {
+public class DateHandler extends JsonDeserializer<LocalDate> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DateHandler.class);
 
     @Override
-    public Date deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public LocalDate deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JsonProcessingException {
         String date = p.getText();
         try {
             if(date != null) {
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                return sdf.parse(date);
+                SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy", Locale.ENGLISH);
+
+                return LocalDate.parse(date, formatter);
             }
             return null;
         } catch (Exception e) {

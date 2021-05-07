@@ -5,6 +5,8 @@ import com.dd.covid.util.DateHandler;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
+import java.time.LocalDate;
+
 public class CasesTimeSeries {
 
     @JsonProperty("dailyconfirmed")
@@ -14,7 +16,7 @@ public class CasesTimeSeries {
     @JsonProperty("dailyrecovered")
     private int dailyRecovered;
     @JsonDeserialize(using = DateHandler.class)
-    private int date;
+    private LocalDate date;
     @JsonProperty("totalconfirmed")
     private int totalConfirmed;
     @JsonProperty("totaldeceased")
@@ -46,11 +48,11 @@ public class CasesTimeSeries {
         this.dailyRecovered = dailyRecovered;
     }
 
-    public int getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(int date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
