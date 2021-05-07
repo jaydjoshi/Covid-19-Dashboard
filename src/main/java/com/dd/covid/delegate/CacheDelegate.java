@@ -48,7 +48,7 @@ public class CacheDelegate implements Delegate{
         return covidRest.getStateTimeSeriesData();
     }
 
-    @Cacheable(TYPE_AHEAD)
+
     public List<String> getTypeAheadData() {
         LOGGER.info("IMP: Adding typeAhead data cache");
         List<Country> countries = (List<Country>) countryRepository.findAll();
