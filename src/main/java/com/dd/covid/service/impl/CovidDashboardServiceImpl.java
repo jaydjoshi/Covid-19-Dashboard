@@ -2,6 +2,7 @@ package com.dd.covid.service.impl;
 
 import com.dd.covid.aop.annotation.LogExecutionTime;
 import com.dd.covid.controller.AuthController;
+import com.dd.covid.delegate.CacheDelegate;
 import com.dd.covid.model.CasesTimeSeriesWrapper;
 import com.dd.covid.model.StateTimeSeriesWrapper;
 import com.dd.covid.rest.CovidRest;
@@ -16,7 +17,7 @@ import org.springframework.stereotype.Service;
 public class CovidDashboardServiceImpl implements CovidDashboardService {
 
     @Autowired
-    CovidRest covidRest;
+    CacheDelegate cacheDelegate;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CovidDashboardServiceImpl.class);
 
@@ -24,13 +25,13 @@ public class CovidDashboardServiceImpl implements CovidDashboardService {
 
     public CasesTimeSeriesWrapper getCountryTimeSeriesData(){
 
-        return covidRest.getCountryTimeSeriesData();
+        return cacheDelegate.getCountryTimeSeriesData();
     }
 
 
 
     public StateTimeSeriesWrapper getStateTimeSeriesData(){
 
-        return covidRest.getStateTimeSeriesData();
+        return cacheDelegate.getStateTimeSeriesData();
     }
 }

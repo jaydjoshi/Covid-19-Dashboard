@@ -1,5 +1,6 @@
 package com.dd.covid.rest;
 
+import com.dd.covid.aop.annotation.LogExecutionTime;
 import com.dd.covid.model.CasesTimeSeriesWrapper;
 import com.dd.covid.model.StateTimeSeriesWrapper;
 import org.slf4j.Logger;
@@ -19,17 +20,17 @@ public class CovidRest {
 
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CovidRest.class);
-    private static final String STATES = "states";
-    private static final String COUNTRY = "country";
+
 
     /**
      * Get Timeseries data from API
      *
-     * @return CasesTimeSeries
+     * @return CasesTimeSeriesWrapper
      */
-    @Cacheable(COUNTRY)
+
+    @LogExecutionTime
     public CasesTimeSeriesWrapper getCountryTimeSeriesData(){
-        LOGGER.info("calling API fto get country data");
+        LOGGER.info("calling API to get country data");
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<CasesTimeSeriesWrapper> timeSeriesCasesResponseEntity = null;
         timeSeriesCasesResponseEntity = restTemplate.getForEntity("https://api.covid19india.org/data.json", CasesTimeSeriesWrapper.class);
@@ -43,11 +44,11 @@ public class CovidRest {
     /**
      * Call below API,
      * https://api.covid19india.org/states_daily.json
-     * @return
+     * @return StateTimeSeriesWrapper
      */
-    @Cacheable(STATES)
+    @LogExecutionTime
     public StateTimeSeriesWrapper getStateTimeSeriesData(){
-        LOGGER.info("calling API fto get states data");
+        LOGGER.info("calling API to get states data");
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<StateTimeSeriesWrapper> timeSeriesCasesResponseEntity = null;
         timeSeriesCasesResponseEntity = restTemplate.getForEntity("https://api.covid19india.org/states_daily.json", StateTimeSeriesWrapper.class);
@@ -57,15 +58,5 @@ public class CovidRest {
 
     }
 
-    @Scheduled(fixedRate = ONE_MINUTE)
-    @CacheEvict(value = { STATES })
-    public void clearStatesCache() {
-        LOGGER.info("##### Clearing states cache #####");
-    }
 
-    @Scheduled(fixedRate = ONE_MINUTE)
-    @CacheEvict(value = { COUNTRY })
-    public void clearCountryCache() {
-        LOGGER.info("##### Clearing country cache #####");
-    }
 }
