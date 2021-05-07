@@ -21,7 +21,7 @@ public class State {
     private boolean isValid;
 
     @Column
-    private String country;
+    private int countryId;
 
     public Long getId() {
         return id;
@@ -55,11 +55,11 @@ public class State {
         isValid = valid;
     }
 
-    public String getCountry() {
-        return country;
+    public int getCountryId() {
+        return countryId;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setCountryId(int countryId) {
+        this.countryId = countryId;
     }
 }

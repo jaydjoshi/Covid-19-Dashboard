@@ -42,7 +42,7 @@ public class CovidDashboardController {
      * @return
      * @throws CountryNotSupportedException
      */
-    @GetMapping("/{country}/{state}")
+    @GetMapping("/{country}/states/{state}")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     @LogExecutionTime
     public StateTimeSeriesWrapper getStateTimeSeriesData(@PathVariable(name = "country") String country, @PathVariable(name = "state") String state) throws CountryNotSupportedException {
