@@ -10,7 +10,7 @@ This project is hosted on heroku at the below url : https://covid-19-dashboard-r
 
 API's are authenticated and authorized using JWT tokens.
 
-UI of this app is available on : https://jaydjoshi.github.io/covid-19/
+UI of this app is available on : https://covid-19-dashboard-ui.herokuapp.com/
 
 ## To start application in local
 
