@@ -38,7 +38,7 @@ public class CovidDashboardController {
     }
 
     /**
-     *
+     * Note - not used currently, can be used to fetch daily data for states
      * @param country
      * @param state
      * @return
@@ -52,6 +52,11 @@ public class CovidDashboardController {
         return covidDashboardService.getStateTimeSeriesData();
     }
 
+    /**
+     * This API is not used in UI
+     * But can be used of giving a list of valid states and countries to search from typeahead
+     * @return
+     */
     @GetMapping("/typeahead")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     @LogExecutionTime

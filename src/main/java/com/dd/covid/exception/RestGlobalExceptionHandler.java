@@ -18,7 +18,7 @@ public class RestGlobalExceptionHandler
      * @param request
      * @return
      */
-    @ExceptionHandler(value = {CountryNotSupportedException.class, StateNotFoundException.class})
+    @ExceptionHandler(value = CountryNotSupportedException.class)
     protected ResponseEntity<Object> handleConflict(RuntimeException ex, WebRequest request) {
         String bodyOfResponse = "Country not supported";
         return handleExceptionInternal(ex, bodyOfResponse, new HttpHeaders(), HttpStatus.NOT_IMPLEMENTED, request);
