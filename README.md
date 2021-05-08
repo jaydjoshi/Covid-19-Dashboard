@@ -23,7 +23,7 @@ Note - This project uses postgres DB
 Run below command,
 `mvn test -Dspring-boot.run.profiles=dev`
 
-##API reference
+## API reference
 
 Thanks to https://github.com/covid19india/api for providing API,
 1. India - https://api.covid19india.org/data.json
